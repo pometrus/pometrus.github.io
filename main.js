@@ -66,7 +66,7 @@ function setup() {
   document.getElementById("game").style.display = "none";
 
   //socket = io.connect('https://pixlplace.herokuapp.com/');
-  socket = io.connect('http://localhost:3000');
+  socket = io('192.168.1.206:3000');
 
   // Socket controllers
   socket.on('error_text', error_text);
