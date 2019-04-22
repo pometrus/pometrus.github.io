@@ -67,6 +67,7 @@ function setup() {
 
   //socket = io.connect('https://pixlplace.herokuapp.com/');
   socket = io('83.148.222.195:3074');
+  console.log('83.148.222.195:3074');
 
   // Socket controllers
   socket.on('error_text', error_text);
