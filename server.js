@@ -7,9 +7,22 @@ const fireb = require("./config.json");
 const firebase = require('firebase');
 const client = require("socket.io-client");
 
-var server = require('http').createServer(app);
-var io = require('socket.io')(server, { origins: '*:*'});
+var https = require('https');
 
+var options = {
+    cert: fs.readFileSync(__dirname + "/etc/lentsencrypt/live/pometrus.com/fullchain.pem"),
+    key: fs.readFileSync(__dirname + "/etc/lentsencrypt/live/pometrus.com/privkey.pem")
+};
+
+app = express();
+
+app.get('/', function(req,res) {
+    res.sendFile(__dirname + '/public');
+});
+
+var server = https.createServer(options, app);
+
+var io = require('socket.io')(server, { origins: '*:*'});
 server.listen(3074);
 
 firebase.initializeApp(fireb);
