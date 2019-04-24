@@ -70,12 +70,12 @@ function load_tree(data) {
     }
   }
 
-  top_bar.show();
-  bot_bar.show();
+  redraw_all();
+
 
 }
 
-function draw() {
+function redraw_all() {
   if (tree == null) {
     return;
   }
@@ -94,7 +94,6 @@ function draw() {
   //
 
   meters.show();
-
 
   if (inventory != null) {
     inventory.show();
@@ -213,6 +212,8 @@ function mousePressed() {
       socket.emit('pometrus_picked', fruit);
     }
   }
+
+  redraw_all();
 
 }
 
