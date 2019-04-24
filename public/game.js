@@ -29,6 +29,7 @@ var sprinkler = [];
 var autopicker = [];
 var dead_window;
 
+
 function load_tree(data) {
 
   if (tree == null) {
@@ -36,15 +37,7 @@ function load_tree(data) {
 
     // Iterfaces
     meters = new Meters(tree.tree.fertilizer_level, tree.tree.hydration, res*3, res * 26);
-    bot_bar = new Bottom_bar();
-    top_bar = new Top_bar();
 
-    // Buttons
-    water_button = new Button(images["button"], images["watering_can_i"], res*3, res*6 + images["button"].height + images["meters"].height);
-    ferti_button = new Button(images["button"], images["fertilizer_i"], res*3,  res*9 + images["button"].height*2 + images["meters"].height);
-    inv_button = new Button(images["button_small_wide"], images["inv_i"], res*3, height - images["button_small_wide"].height - res*3);
-    shop_button = new Button(images["button_small_wide"], images["shop_i"], res*4 + images["button_small_wide"].width, height - images["button_small_wide"].height - res*3);
-    stats_button = new Button(images["button_small_wide"], images["stats_i"], res*5 + images["button_small_wide"].width*2, height - images["button_small_wide"].height - res*3);
 
     if (tree.tree["in-use"]["sprinkler"] > 0 && sprinkler.length == 0) {
       sprinkler.push(new Sprinkler(35, 400));
@@ -53,6 +46,7 @@ function load_tree(data) {
     if (tree.tree["in-use"]["autopicker"]["timer"] > 0 && autopicker.length == 0) {
       autopicker.push(new Autopicker(420, 360));
     }
+
 
   }
   else {
@@ -76,6 +70,8 @@ function load_tree(data) {
     }
   }
 
+  top_bar.show();
+  bot_bar.show();
 
 }
 
@@ -84,13 +80,8 @@ function draw() {
     return;
   }
 
-  background(201, 237, 237);
-  var darkness = calculate_tint();
-
   // LIVING ELEMTES
-  tint(darkness);
-  image(images["background"], 0, 0, 250*res, 250*res);
-  image(images["hill"], 0, 190*res, images["hill"].width, images["hill"].height);
+
   tree.show();
   if (sprinkler.length > 0) {
     sprinkler[0].show();
@@ -102,13 +93,7 @@ function draw() {
 
   //
 
-  tint(255);
   meters.show();
-  top_bar.show();
-  bot_bar.show();
-  water_button.show();
-  ferti_button.show();
-
 
 
   if (inventory != null) {
@@ -160,7 +145,6 @@ function mousePressed() {
   };
 
   if (shop != null) {
-
 
     ////
 

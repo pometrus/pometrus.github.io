@@ -22,9 +22,9 @@ let connections = [];
 let logged_in = {};
 
 const products = {
-  "sprinkler" : 400,
-  "fertilizer" : 112,
-  "autopicker": 300
+  "sprinkler" : 300,
+  "fertilizer" : 80,
+  "autopicker": 140
 };
 
 console.log("Server running...");
@@ -119,7 +119,7 @@ function newConnection(socket) {
                 "sprinkler": 0,
                 "fertilizer": 0,
                 "autopicker": 0,
-                "money": 0
+                "money": 1000
               },
               "tree": {
                 "age": 0,
@@ -643,7 +643,7 @@ function reset_game(user) {
     "sprinkler": 0,
     "fertilizer": 0,
     "autopicker": 0,
-    "money": 0
+    "money": 1000
   },
   "tree": {
     "age": 0,
