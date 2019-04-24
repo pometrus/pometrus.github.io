@@ -61,15 +61,12 @@ function preload() {
 
 function setup() {
   var canvas = createCanvas(250*res, 250*res);
-  frameRate(60);
+  frameRate(10);
   canvas.parent('game');
   document.getElementById("game").style.display = "none";
 
-  //socket = io.connect('https://pixlplace.herokuapp.com/');
-  /*socket = io('83.148.222.195:3074');
-  console.log('83.148.222.195:3074');*/
 
-  socket = io.connect('http://83.148.222.195:3074');
+  socket = io.connect('/');
 
 
   // Socket controllers
@@ -90,6 +87,26 @@ function setup() {
   textFont(pixel_font);
 
   stay_awake_timer();
+
+  background(201, 237, 237);
+
+  image(images["background"], 0, 0, 250*res, 250*res);
+  image(images["hill"], 0, 190*res, images["hill"].width, images["hill"].height);
+
+  bot_bar = new Bottom_bar();
+  top_bar = new Top_bar();
+
+  // Buttons
+  water_button = new Button(images["button"], images["watering_can_i"], res*3, res*6 + images["button"].height + images["meters"].height);
+  ferti_button = new Button(images["button"], images["fertilizer_i"], res*3,  res*9 + images["button"].height*2 + images["meters"].height);
+  inv_button = new Button(images["button_small_wide"], images["inv_i"], res*3, height - images["button_small_wide"].height - res*3);
+  shop_button = new Button(images["button_small_wide"], images["shop_i"], res*4 + images["button_small_wide"].width, height - images["button_small_wide"].height - res*3);
+  stats_button = new Button(images["button_small_wide"], images["stats_i"], res*5 + images["button_small_wide"].width*2, height - images["button_small_wide"].height - res*3);
+
+  top_bar.show();
+  bot_bar.show();
+  water_button.show();
+  ferti_button.show();
 
 }
 
