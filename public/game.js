@@ -76,9 +76,13 @@ function load_tree(data) {
 }
 
 function redraw_all() {
+
   if (tree == null) {
     return;
   }
+
+  image(images["background"], 0, 0, 250*res, 250*res);
+  image(images["hill"], 0, 190*res, images["hill"].width, images["hill"].height);
 
   // LIVING ELEMTES
 

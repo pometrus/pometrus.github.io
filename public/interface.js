@@ -190,7 +190,7 @@ function Buy_cell(_x, _y, _product, _function) {
       }
     }
     this.btn_buy.show();
-    tint(255);
+    noTint();
 
   }
 
@@ -290,7 +290,7 @@ function Pometrus_sell_cell(_x, _y) {
       }
     }
     this.btn_sell.show();
-    tint(255);
+    noTint();
 
   }
 

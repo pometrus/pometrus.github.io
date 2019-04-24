@@ -137,6 +137,7 @@ function Pometrus(_x, _y, _original_x, _num, _fell) {
       }
       setTimeout(() => {
         this.drop(speed + 1);
+        redraw_all();
       }, 1/frameRate);
 
     }
