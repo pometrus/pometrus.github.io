@@ -83,6 +83,11 @@ function redraw_all() {
 
   image(images["background"], 0, 0, 250*res, 250*res);
   image(images["hill"], 0, 190*res, images["hill"].width, images["hill"].height);
+  top_bar.show();
+  bot_bar.show();
+  water_button.show();
+  ferti_button.show();
+
 
   // LIVING ELEMTES
 
