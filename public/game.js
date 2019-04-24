@@ -127,6 +127,7 @@ function mousePressed() {
 
   if (dead_window != null) {
     dead_window = null;
+    redraw_all();
     return;
   }
 
@@ -149,6 +150,8 @@ function mousePressed() {
       inventory = null;
       statistics = new Statistics(tree);
     }
+
+    redraw_all();
     return;
   };
 
@@ -172,6 +175,7 @@ function mousePressed() {
       shop = null;
       statistics = new Statistics(tree);
     }
+    redraw_all();
     return;
   };
 
@@ -193,6 +197,8 @@ function mousePressed() {
       statistics = null;
       inventory = new Inventory();
     }
+
+    redraw_all();
     return;
   };
 
