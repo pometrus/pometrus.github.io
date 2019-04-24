@@ -93,6 +93,8 @@ function setup() {
   image(images["background"], 0, 0, 250*res, 250*res);
   image(images["hill"], 0, 190*res, images["hill"].width, images["hill"].height);
 
+  tree = new Tree(temp_user_data);
+
   bot_bar = new Bottom_bar();
   top_bar = new Top_bar();
 
