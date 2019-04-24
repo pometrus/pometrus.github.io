@@ -81,8 +81,17 @@ function redraw_all() {
     return;
   }
 
+  var darkness = calculate_tint();
+  if (darkness == 255) {
+    noTint();
+  } else {
+    tint(darkness);
+  }
   image(images["background"], 0, 0, 250*res, 250*res);
   image(images["hill"], 0, 190*res, images["hill"].width, images["hill"].height);
+
+  noTint();
+
   top_bar.show();
   bot_bar.show();
   water_button.show();
@@ -90,8 +99,14 @@ function redraw_all() {
 
 
   // LIVING ELEMTES
-
+  if (darkness == 255) {
+    noTint();
+  } else {
+    tint(darkness);
+  }
   tree.show();
+  noTint();
+
   if (sprinkler.length > 0) {
     sprinkler[0].show();
   }
@@ -204,32 +219,34 @@ function mousePressed() {
 
   if (water_button.intersects(mouseX, mouseY)) {
     water_tree(10);
+    return redraw_all();
   }
   if (ferti_button.intersects(mouseX, mouseY)) {
     use_fertilizer();
+    return redraw_all();
   }
 
   if (inv_button.intersects(mouseX, mouseY)) {
     inventory = new Inventory(tree.inventory);
-
+    return redraw_all();
   }
 
   if (shop_button.intersects(mouseX, mouseY)) {
     shop = new Shop();
+    return redraw_all();
   }
 
   if (stats_button.intersects(mouseX, mouseY)) {
     statistics = new Statistics(tree);
+    return redraw_all();
   }
 
   for (var fruit in tree.pometrus_fruits) {
     if (tree.pometrus_fruits[fruit].intersects(mouseX, mouseY)) {
       socket.emit('pometrus_picked', fruit);
+      return redraw_all();
     }
   }
-
-  redraw_all();
-
 }
 
 //////////////////
@@ -252,12 +269,6 @@ function drop_pometrus(id) {
   tree.pometrus_fruits[id].drop();
 }
 
-function test_spawn() {
-  socket.emit('test_spawn');
-}
-/*function despawn_pometrus(id) {
-  tree.pometrus_fruits[id].remove();
-}*/
 
 function calculate_tint() {
   var hour = current_time["hours"];
@@ -287,7 +298,7 @@ function calculate_tint() {
 
 function show_dead(data) {
   dead_window = new Dead(data);
-
+  return redraw_all();
 
 }
 

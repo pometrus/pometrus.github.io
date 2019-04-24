@@ -72,12 +72,13 @@ function Bottom_bar() {
     textAlign(LEFT, CENTER);
     textSize(7*res);
 
-    /*text(tree.inventory.pometrus, res*111, height - 11*res);
-    image(images["pometrus_i"], res*96, height - res*17, images["pometrus_i"].width, images["pometrus_i"].height);
+    if (tree != null) {
+      text(tree.inventory.pometrus, res*111, height - 11*res);
+      image(images["pometrus_i"], res*96, height - res*17, images["pometrus_i"].width, images["pometrus_i"].height);
 
-    text(tree.inventory.money, res*69.5 + res*111, height - 11*res);
-    image(images["coin_i"], res*71 + res*96, height - res*17, images["coin_i"].width, images["coin_i"].height);
-*/
+      text(tree.inventory.money, res*69.5 + res*111, height - 11*res);
+      image(images["coin_i"], res*71 + res*96, height - res*17, images["coin_i"].width, images["coin_i"].height);
+    }
   }
 
 }
@@ -369,7 +370,7 @@ function Use_cell(_x, _y, _product, _function) {
       tint(200);
     }
     this.btn_use.show();
-    tint(255);
+    noTint();
 
   }
 
